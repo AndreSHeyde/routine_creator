@@ -1,22 +1,24 @@
 class ExcerciseModule:
-    name = ""
-    desc = ""
-    partList = []
+    
+    def __init__(self, n, d=""):
+        self.name = n
+        self.desc = d
+        self.partList = []
 
-    def __init__(self, name):
-        self.name = name
 
     def addDescripton(self, txt):
         self.desc = txt
 
     def addParts(self, bodyPart):
-        self.partList.append(bodyPart)
+        (self.partList).append(bodyPart)
 
     def getModule(self):
         parts = "Body Parts:"
         for x in self.partList:
-            parts = parts + " " +x
+            parts = parts + " " + x
         print(self.name + "\n" + "Description: " + self.desc + "\n" + parts, sep="\n")
+
+    
 
 print("running")
 test = ExcerciseModule("Pull-Ups")
