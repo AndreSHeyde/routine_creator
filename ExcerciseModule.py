@@ -10,11 +10,19 @@ class ExcerciseModule:
         self.desc = txt
 
     def addParts(self, bodyPart):
-        self.partList.append(bodyParts)
+        self.partList.append(bodyPart)
 
     def getModule(self):
-        return self.name + "\n" + "Description: " + self.desc + "\n" + "Body Parts: " + self.partList
+        parts = "Body Parts:"
+        for x in self.partList:
+            parts = parts + " " +x
+        print(self.name + "\n" + "Description: " + self.desc + "\n" + parts, sep="\n")
 
-print("Hello World")
-test = ExerciseModule(input("Enter exercise name: "))
-test.addDescription(input("Enter exercise description: "))
+print("running")
+test = ExcerciseModule("Pull-Ups")
+test.addDescripton("Pull yourself up")
+test.addParts("Arms")
+test.addParts("Back")
+test.addParts("Shoulders")
+test.getModule()
+
