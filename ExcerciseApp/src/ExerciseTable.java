@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ExerciseTable 
+public class ExerciseTable implements java.io.Serializable
 {
 	ArrayList<ExerciseClass>[] exerciseTable;
 	

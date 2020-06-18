@@ -30,6 +30,18 @@ public class test
 		
 		//Prints out excercises in table
 		System.out.println(table.toString());
+		
+		try {
+			FileOutputStream fos = new FileOutputStream("Database.ser");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(table);
+			oos.close();
+			fos.close();
+			System.out.println("Serialized");
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+		
 
 	}
 
