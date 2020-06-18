@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class ExcerciseClass implements java.io.Serializable
+public class ExerciseClass implements java.io.Serializable
 {
 	String name;
 	String description;
@@ -10,7 +10,7 @@ public class ExcerciseClass implements java.io.Serializable
 	ArrayList<String> equipment = new ArrayList<String>();
 	
 	//Creates Excercise with Name, Description, and Muscle group
-	public ExcerciseClass(String n, String d, MuscleGroup m)
+	public ExerciseClass(String n, String d, MuscleGroup m)
 	{
 		this.name = n;
 		this.description = d;
@@ -74,7 +74,7 @@ public class ExcerciseClass implements java.io.Serializable
 	
 	public String toString()
 	{
-		String ret = "Excercise: " + this.name +
+		String ret = "Exercise: " + this.name +
 				     "\nDescription: " + this.description +
 				     "\nPrimary Muscle: " + this.primaryMuscle.toString() +
 				     "\nSupporting Muscle: " + this.supportingMuscle.toString() +
