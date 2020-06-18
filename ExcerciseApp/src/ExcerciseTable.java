@@ -23,10 +23,38 @@ public class ExcerciseTable
 		return excerciseTable[i];
 	}
 	
-	//helps in ArrayList printing each exercise
-	public String toStringHelper(String r)
+	public ExcerciseClass getExcercise(String n)
 	{
-		return r;
+		for (MuscleGroup i : MuscleGroup.values())
+		{
+			ArrayList<ExcerciseClass> muscleExcercises = excerciseTable[i.getLocation()];
+			for (int j = 0; j < muscleExcercises.size(); j++)
+			{
+				ExcerciseClass ret = muscleExcercises.get(j);
+				if (ret.getName().contentEquals(n))
+				{
+					return ret;
+				}
+			}
+		}
+		return null;
+	}
+	
+	public ExcerciseClass removeExcercise(String n)
+	{
+		for (MuscleGroup i : MuscleGroup.values())
+		{
+			ArrayList<ExcerciseClass> muscleExcercises = excerciseTable[i.getLocation()];
+			for (int j = 0; j < muscleExcercises.size(); j++)
+			{
+				ExcerciseClass ret = muscleExcercises.get(j);
+				if (ret.getName().contentEquals(n))
+				{
+					return muscleExcercises.remove(j);
+				}
+			}
+		}
+		return null;
 	}
 	
 	//Converts entire table to a string
