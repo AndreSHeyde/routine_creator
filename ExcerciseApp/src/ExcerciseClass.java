@@ -72,22 +72,15 @@ public class ExcerciseClass implements java.io.Serializable
 		this.equipment.add(e);
 	}
 	
-	public void printExcercise()
+	public String toString()
 	{
-		System.out.println("Excercise: " + this.name +
-				           "\nDescription: " + this.description +
-				           "\nPrimary Muscle: " + this.primaryMuscle.toString() +
-				           "\nSupporting Muscle: " + this.supportingMuscle.toString() +
-						   "\nEquipment: " + this.equipment.toString());
+		String ret = "Excercise: " + this.name +
+				     "\nDescription: " + this.description +
+				     "\nPrimary Muscle: " + this.primaryMuscle.toString() +
+				     "\nSupporting Muscle: " + this.supportingMuscle.toString() +
+				     "\nEquipment: " + this.equipment.toString();
+		return ret;
 
 	}
-	public static void main(String[] args)
-	{
-		
-		ExcerciseClass a = new ExcerciseClass("Pull-Ups", "Pull Yourself Up", MuscleGroup.BACK);
-		a.addSuppMuscle(MuscleGroup.BICEPS);
-		a.addSuppMuscle(MuscleGroup.SHOULDERS);
-		a.addEquipment("Bar");
-		a.printExcercise();
-	}
+
 }
