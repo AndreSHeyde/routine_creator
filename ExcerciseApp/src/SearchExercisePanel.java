@@ -33,19 +33,27 @@ public abstract class SearchExercisePanel
 		muscleGroupDropDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				muscleExercisesDropDown.removeAllItems();
-				ArrayList<ExerciseClass> exerciseList = t.getList(((MuscleGroup)muscleGroupDropDown.getSelectedItem()).getLocation());
+				ArrayList<ExerciseClass> exerciseList = t.getList(((MuscleGroup)muscleGroupDropDown.getSelectedItem()));
 				for(int i = 0; i < exerciseList.size(); i++)
 				{
-					muscleExercisesDropDown.addItem(exerciseList.get(i));
+					muscleExercisesDropDown.addItem(exerciseList.get(i).getName());
 				}
 			}
 		});
 		
 		muscleExercisesDropDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-				exerciseDescription.setText(muscleExercisesDropDown.getSelectedItem().toString());
-				} catch (NullPointerException n) {
+				try 
+				{
+					ArrayList<ExerciseClass> exerciseList = t.getList(((MuscleGroup)muscleGroupDropDown.getSelectedItem()));
+					exerciseDescription.setText(exerciseList.get(muscleExercisesDropDown.getSelectedIndex()).toString());
+				} 
+				catch (NullPointerException n) 
+				{
+					exerciseDescription.setText("");
+				}
+				catch (IndexOutOfBoundsException n)
+				{
 					exerciseDescription.setText("");
 				}
 			}
