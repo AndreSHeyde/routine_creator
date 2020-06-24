@@ -24,4 +24,9 @@ public enum MuscleGroup {
 	{
 		return this.arrayLocation;
 	}
+	
+	public static int muscleNum()
+	{
+		return 11;
+	}
 }

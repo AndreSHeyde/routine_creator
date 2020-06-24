@@ -7,7 +7,7 @@ public class ExerciseTable implements java.io.Serializable
 	public ExerciseTable()
 	{
 		exerciseTable = new ArrayList[11];
-		for (int i = 0; i < 11; i++)
+		for (int i = 0; i < MuscleGroup.muscleNum(); i++)
 		{
 			exerciseTable[i] = new ArrayList<ExerciseClass>();
 		}
