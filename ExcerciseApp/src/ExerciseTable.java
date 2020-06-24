@@ -23,6 +23,12 @@ public class ExerciseTable implements java.io.Serializable
 		return exerciseTable[i];
 	}
 	
+	public ArrayList<ExerciseClass> getList(MuscleGroup m)
+	{
+		return exerciseTable[m.getLocation()];
+	}
+	
+	
 	public ExerciseClass getExercise(String n)
 	{
 		for (MuscleGroup i : MuscleGroup.values())
