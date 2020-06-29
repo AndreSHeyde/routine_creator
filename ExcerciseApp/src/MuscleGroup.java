@@ -10,7 +10,8 @@ public enum MuscleGroup {
 	WAIST     (7), 
 	HIPS      (8), 
 	THIGHS    (9), 
-	CALVES    (10)
+	CALVES    (10),
+	ABS		  (11)
 	;
 	
 	private final int arrayLocation;
