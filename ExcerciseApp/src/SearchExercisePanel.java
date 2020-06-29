@@ -7,10 +7,9 @@ import javax.swing.*;
 public abstract class SearchExercisePanel
 {
 	static JPanel p;
-	ExerciseTable table;
 	
 	
-	public static void init(guiClass g, ExerciseTable t)
+	public static void init(guiClass g)
 	{	
 		p = new JPanel(null);
 		p.setSize(800,500);
@@ -33,7 +32,7 @@ public abstract class SearchExercisePanel
 		muscleGroupDropDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				muscleExercisesDropDown.removeAllItems();
-				ArrayList<ExerciseClass> exerciseList = t.getList(((MuscleGroup)muscleGroupDropDown.getSelectedItem()));
+				ArrayList<ExerciseClass> exerciseList = ExerciseTable.getList(((MuscleGroup)muscleGroupDropDown.getSelectedItem()));
 				for(int i = 0; i < exerciseList.size(); i++)
 				{
 					muscleExercisesDropDown.addItem(exerciseList.get(i).getName());
@@ -45,7 +44,7 @@ public abstract class SearchExercisePanel
 			public void actionPerformed(ActionEvent e) {
 				try 
 				{
-					ArrayList<ExerciseClass> exerciseList = t.getList(((MuscleGroup)muscleGroupDropDown.getSelectedItem()));
+					ArrayList<ExerciseClass> exerciseList = ExerciseTable.getList(((MuscleGroup)muscleGroupDropDown.getSelectedItem()));
 					exerciseDescription.setText(exerciseList.get(muscleExercisesDropDown.getSelectedIndex()).toString());
 				} 
 				catch (NullPointerException n) 

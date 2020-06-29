@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 public class test 
 {
 	//Simple Test Cases
@@ -23,18 +24,21 @@ public class test
 		c.addEquipment("Bench Press");
 		
 		//Creates table and adds excercise to table
-		ExerciseTable table = new ExerciseTable();
-		table.addExercise(a);
-		table.addExercise(b);
-		table.addExercise(c);
+		ArrayList<ExerciseClass>[] data = new ArrayList[11];
+		for(int i = 0; i < MuscleGroup.muscleNum(); i++)
+		{
+			data[i] = new ArrayList<ExerciseClass>();
+		}
 		
-		//Prints out excercises in table
-		System.out.println(table.toString());
+		data[a.getPrimMuscle().getLocation()].add(a);
+		data[b.getPrimMuscle().getLocation()].add(b);
+		data[c.getPrimMuscle().getLocation()].add(c);
+
 		
 		try {
 			FileOutputStream fos = new FileOutputStream("Database.ser");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(table);
+			oos.writeObject(data);
 			oos.close();
 			fos.close();
 			System.out.println("Serialized");

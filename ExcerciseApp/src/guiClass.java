@@ -6,17 +6,14 @@ import java.util.ArrayList;
 public class guiClass
 {
 	JFrame frame = new JFrame("ExerciseApp");
-	ExerciseTable table;
-	//Will change to static table later
 	
-	public guiClass(ExerciseTable t)
+	public guiClass()
 	{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(900,600);
-		table = t;
 		
 		AppMainMenuPanel.init(this);
-		SearchExercisePanel.init(this, t);
+		SearchExercisePanel.init(this);
 		CreateExercisePlanPanel.init(this);
 
 		frame.add(AppMainMenuPanel.getPanel());
