@@ -5,61 +5,50 @@ import java.util.ArrayList;
 
 public class guiClass
 {
-	JFrame frame;
-	ExerciseTable table;
-	//Will change to static table later
+	JFrame frame = new JFrame("ExerciseApp");
 	
-	public guiClass(ExerciseTable t)
+	public guiClass()
 	{
-		frame = new JFrame("Main Menu");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(900,500);
-		table = t;
+		frame.setSize(900,600);
 		
-		JComboBox muscleGroupDropDown = new JComboBox(MuscleGroup.values());		
-		muscleGroupDropDown.setBounds(50,frame.getHeight()/2,140,30);
-		
-		JComboBox muscleExercisesDropDown = new JComboBox();
-		muscleExercisesDropDown.setBounds(200,frame.getHeight()/2,140,30);
-		
-		JTextArea exerciseDescription = new JTextArea();
-		exerciseDescription.setBounds(400,frame.getHeight()/3,400,200);
-		exerciseDescription.setRows(10);
-		exerciseDescription.setColumns(80);
-		exerciseDescription.setEditable(true);
-		
-		muscleGroupDropDown.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				muscleExercisesDropDown.removeAllItems();
-				ArrayList<ExerciseClass> exerciseList = t.getList(((MuscleGroup)muscleGroupDropDown.getSelectedItem()).getLocation());
-				for(int i = 0; i < exerciseList.size(); i++)
-				{
-					muscleExercisesDropDown.addItem(exerciseList.get(i).getName());
-				}
-			}
-		});
-		
-		muscleExercisesDropDown.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-				exerciseDescription.setText(t.getExercise(muscleExercisesDropDown.getSelectedItem().toString()).toString());
-				} catch (NullPointerException n) {
-					exerciseDescription.setText("");
-				}
-			}
-		});
-		
+		AppMainMenuPanel.init(this);
+		SearchExercisePanel.init(this);
+		CreateExercisePlanPanel.init(this);
 
-		frame.add(muscleGroupDropDown);
-		frame.add(muscleExercisesDropDown);
-		frame.add(exerciseDescription);
+		frame.add(AppMainMenuPanel.getPanel());
+		frame.add(SearchExercisePanel.getPanel());
+		frame.add(CreateExercisePlanPanel.getPanel());
+		
 		frame.setLayout(null);
 	
 	}
 	
 	public void display()
 	{
+		this.changeState(1);
 		frame.setVisible(true);
+	}
+	
+	public void changeState(int i)
+	{
+		AppMainMenuPanel.setVisible(false);
+		SearchExercisePanel.setVisible(false);
+		CreateExercisePlanPanel.setVisible(false);
+		
+		switch (i) {
+			case 1:
+				AppMainMenuPanel.setVisible(true);
+				break;
+			case 2:
+				SearchExercisePanel.setVisible(true);
+				break;
+			case 3:
+				CreateExercisePlanPanel.setVisible(true);
+				break;
+			default:
+				throw new NullPointerException("Accessing Illegal JPanel");
+		}
 	}
 
 }

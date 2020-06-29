@@ -1,29 +1,44 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-public class ExerciseTable implements java.io.Serializable
+public abstract class ExerciseTable implements java.io.Serializable
 {
-	ArrayList<ExerciseClass>[] exerciseTable;
+	static ArrayList<ExerciseClass>[] exerciseTable;
 	
-	public ExerciseTable()
+	public static void init()
 	{
-		exerciseTable = new ArrayList[11];
-		for (int i = 0; i < 11; i++)
-		{
-			exerciseTable[i] = new ArrayList<ExerciseClass>();
+		try {
+			FileInputStream fis = new FileInputStream("Database.ser");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			exerciseTable = (ArrayList<ExerciseClass>[]) ois.readObject();
+			ois.close();
+			fis.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 	
-	public void addExercise(ExerciseClass e)
+	public static void addExercise(ExerciseClass e)
 	{
 		exerciseTable[e.getPrimMuscle().getLocation()].add(e);
 	}
 	
-	public ArrayList<ExerciseClass> getList(int i)
+	public static ArrayList<ExerciseClass> getList(int i)
 	{
 		return exerciseTable[i];
 	}
 	
-	public ExerciseClass getExercise(String n)
+	public static ArrayList<ExerciseClass> getList(MuscleGroup m)
+	{
+		return exerciseTable[m.getLocation()];
+	}
+	
+	
+	public static ExerciseClass getExercise(String n)
 	{
 		for (MuscleGroup i : MuscleGroup.values())
 		{
@@ -58,7 +73,7 @@ public class ExerciseTable implements java.io.Serializable
 	}
 	
 	//Converts entire table to a string
-	public String toString()
+	public static String staticToString()
 	{
 		String ret = "";
 		for (MuscleGroup i : MuscleGroup.values())
