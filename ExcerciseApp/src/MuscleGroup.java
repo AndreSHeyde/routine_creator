@@ -28,6 +28,6 @@ public enum MuscleGroup {
 	
 	public static int muscleNum()
 	{
-		return 11;
+		return 12;
 	}
 }

@@ -4,6 +4,7 @@ public class test3
 	//Simple Test Cases
 	public static void main(String[] args)
 	{
+		/*
 		//Creates exercise
 		ExerciseClass pullUp = new ExerciseClass("Pull-Ups", "Pull Yourself Up", MuscleGroup.BACK);
 		pullUp.addSuppMuscle(MuscleGroup.BICEPS);
@@ -153,42 +154,45 @@ public class test3
 		
 		
 		//Creates table and adds exercise to table
-		ExerciseTable table = new ExerciseTable();
-		table.addExercise(pullUp);
-		table.addExercise(deadlift);
-		table.addExercise(barbellRow);
-		table.addExercise(latPullDown);
-		table.addExercise(farmersWalk);
-		table.addExercise(bicepCurl);
-		table.addExercise(hammerCurl);
-		table.addExercise(chinUp);
-		table.addExercise(seatedRow);
-		table.addExercise(negativeChinUp);
-		table.addExercise(barbellSquat);
-		table.addExercise(gobletSquat);
-		table.addExercise(standingCalfRaise);
-		table.addExercise(legExtension);
-		table.addExercise(wallSit);
-		table.addExercise(plank);
-		table.addExercise(russianTwist);
-		table.addExercise(captainsChairLegRaise);
-		table.addExercise(lyingLegRaise);
-		table.addExercise(abRollOut);
-		table.addExercise(barbellBenchPress);
-		table.addExercise(inclineDumbbellPress);
-		table.addExercise(pushUp);
-		table.addExercise(cableFly);
-		table.addExercise(dumbbellFly);
-		table.addExercise(dips);
-		table.addExercise(overheadTricepExtension);
-		table.addExercise(skullCrusher);
-		table.addExercise(tricepPulldown);
-		table.addExercise(closeGripBenchPress);
-		table.addExercise(diamondPushup);
+		ExerciseTable.initEmpty();
+	
+		ExerciseTable.addExercise(pullUp);
+		ExerciseTable.addExercise(deadlift);
+		ExerciseTable.addExercise(barbellRow);
+		ExerciseTable.addExercise(latPullDown);
+		ExerciseTable.addExercise(farmersWalk);
+		ExerciseTable.addExercise(bicepCurl);
+		ExerciseTable.addExercise(hammerCurl);
+		ExerciseTable.addExercise(chinUp);
+		ExerciseTable.addExercise(seatedRow);
+		ExerciseTable.addExercise(negativeChinUp);
+		ExerciseTable.addExercise(barbellSquat);
+		ExerciseTable.addExercise(gobletSquat);
+		ExerciseTable.addExercise(standingCalfRaise);
+		ExerciseTable.addExercise(legExtension);
+		ExerciseTable.addExercise(wallSit);
+		ExerciseTable.addExercise(plank);
+		ExerciseTable.addExercise(russianTwist);
+		ExerciseTable.addExercise(captainsChairLegRaise);
+		ExerciseTable.addExercise(lyingLegRaise);
+		ExerciseTable.addExercise(abRollOut);
+		ExerciseTable.addExercise(barbellBenchPress);
+		ExerciseTable.addExercise(inclineDumbbellPress);
+		ExerciseTable.addExercise(pushUp);
+		ExerciseTable.addExercise(cableFly);
+		ExerciseTable.addExercise(dumbbellFly);
+		ExerciseTable.addExercise(dips);
+		ExerciseTable.addExercise(overheadTricepExtension);
+		ExerciseTable.addExercise(skullCrusher);
+		ExerciseTable.addExercise(tricepPulldown);
+		ExerciseTable.addExercise(closeGripBenchPress);
+		ExerciseTable.addExercise(diamondPushup);
 		
 		//Prints out exercises in table
-		System.out.println(table.toString());
+		System.out.println(ExerciseTable.staticToString());
+		ExerciseTable.save();*/
 		
+		/*
 		try {
 			FileOutputStream fos = new FileOutputStream("Database.ser");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -198,7 +202,7 @@ public class test3
 			System.out.println("Serialized");
 		} catch (IOException i) {
 			i.printStackTrace();
-		}
+		}*/
 		
 
 	}

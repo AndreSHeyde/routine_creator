@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.io.*;
 
 public abstract class ExerciseTable implements java.io.Serializable
 {
@@ -19,6 +20,15 @@ public abstract class ExerciseTable implements java.io.Serializable
 			i.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public static void initEmpty()
+	{
+		exerciseTable = new ArrayList[MuscleGroup.muscleNum()];
+		for(int i = 0; i < MuscleGroup.muscleNum(); i++)
+		{
+			exerciseTable[i] = new ArrayList<ExerciseClass>();
 		}
 	}
 	
@@ -72,6 +82,20 @@ public abstract class ExerciseTable implements java.io.Serializable
 		return null;
 	}
 	
+	public static void save()
+	{
+		try {
+			FileOutputStream fos = new FileOutputStream("Database.ser");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(exerciseTable);
+			oos.close();
+			fos.close();
+			System.out.println("Serialized");
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+	}
+	
 	//Converts entire table to a string
 	public static String staticToString()
 	{
@@ -87,5 +111,6 @@ public abstract class ExerciseTable implements java.io.Serializable
 		}
 		return ret;
 	}
+
 
 }
